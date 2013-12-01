@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Elasticdemo::Application.load_tasks
+TestServer::Application.load_tasks

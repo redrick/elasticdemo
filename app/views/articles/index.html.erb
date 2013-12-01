@@ -1,0 +1,37 @@
+<h1>Test listing articles</h1>
+<%= link_to 'New Article', new_article_path %>
+<%= will_paginate @articles %>
+<br/>
+<table>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td>
+          <h2>
+            <strong><%= link_to article.title, article_path(article) %></strong>
+          </h2>
+        </td>
+      </tr>
+      <tr>
+        <td>Author:</td>
+        <td><%= article.author %></td>
+      </tr>
+      <tr>
+        <td colspan='2'><%= article.content %></td>
+      </tr>
+      <tr>
+        <td>
+          Comments count:
+        </td>
+        
+        <td>
+          <%= article.comments.count %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<br/>
+<%= will_paginate @articles %>

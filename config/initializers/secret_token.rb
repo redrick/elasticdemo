@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Elasticdemo::Application.config.secret_key_base = '28e21a700c3a6e8215645820cb8d2af51a8e811467916d37a299d5e3a31c04c5e68953db21f4ca3a0b81b9fac4f0fd84a4dd2b15fa222473f3699d8a650fee6f'
+TestServer::Application.config.secret_key_base = '2397291300097d5f918c0cf2000e2933f134b97ed80a430bacbb5d80a60402699e621596c0925ac959674d4e5f26184160cdebbadb1082e83cffc22ecc866bd1'

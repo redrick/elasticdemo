@@ -1,0 +1,75 @@
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', articles_path %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2><strong><%= @article.title %></strong></h2>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<p>
+  <%= @article.content %>
+</p>
+
+
+
+<p>
+  <h2><strong>Comments</strong></h2>
+</p>
+
+<% @article.comments.each do |comment| %>
+  <div class="frame">
+    <p>
+      <strong>Author:</strong>
+      <%= comment.author %>
+    </p>
+
+    <p>
+      <strong>Message:</strong>
+      <%= comment.message %>
+    </p>
+    <p>
+      <%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </p>
+  </div>
+<% end %>
+
+<p>
+  <h3><strong>New Comment:</strong></h3>
+</p>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </div>
+    <%= f.hidden_field :article_id, value: @article.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

@@ -1,4 +1,7 @@
 Tire.configure do
+  if Rails.env == 'production'
+    url "http://iv932wpv:dtmn59a9re61rp0s@ivy-4707236.eu-west-1.bonsai.io"
+  end
   logger Rails.root + "log/tire_#{Rails.env}.log"
 end
 

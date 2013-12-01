@@ -2,6 +2,7 @@ TestServer::Application.routes.draw do
   resources :comments
 
   resources :articles
+  post 'articles/search' => 'articles#search', as: :articles_search
 
   root 'articles#index'
 

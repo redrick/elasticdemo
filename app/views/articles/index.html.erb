@@ -1,4 +1,12 @@
 <h1>Test listing articles</h1>
+<div class="search">
+  <%= form_tag articles_search_path do %>
+    <%= text_field_tag :query, params[:query], hint: 'Search', placeholder: 'Search', autofocus: true %>
+    <%= button_tag 'Search', class: 'btn' %>
+    <%= link_to 'Clear', articles_path %>
+  <% end %>
+</div>
+
 <%= link_to 'New Article', new_article_path %>
 <%= will_paginate @articles %>
 <br/>

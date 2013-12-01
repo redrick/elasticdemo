@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.paginate(page: params[:page], per_page: 5)
+    @articles ||= Article.all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /articles/1
@@ -59,6 +59,15 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to articles_url }
       format.json { head :no_content }
+    end
+  end
+
+  # this is where search is gonna happen
+  def search
+    # @artciles = Article.search(params[:query]).results.paginate(page: params[:page], per_page: 5)
+    index
+    respond_to do |format|
+      format.html { render 'index' }
     end
   end
 

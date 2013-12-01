@@ -38,4 +38,7 @@ end
 
 gem 'rails_12factor'
 
-gem 'newrelic_rpm'
+gem 'tire', require: 'tire'
+gem 'yajl-ruby', require: 'yajl/json_gem'
+
+gem 'pry'

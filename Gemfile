@@ -44,3 +44,5 @@ gem 'yajl-ruby', require: 'yajl/json_gem'
 gem 'pry'
 
 gem 'paperclip'
+
+gem 'aws-sdk'

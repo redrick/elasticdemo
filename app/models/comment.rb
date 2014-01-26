@@ -14,6 +14,9 @@ class Comment < ActiveRecord::Base
   # I am giving the index name according to env
   index_name("#{Rails.env}-comments")
 
+  after_save lambda { self.article.update_index }
+  after_destroy lambda { self.article.update_index }
+
   mapping do
     indexes :id, type: 'integer'
     indexes :author, type: 'string'
@@ -32,8 +35,9 @@ class Comment < ActiveRecord::Base
 
   def to_indexed_json
     {
-      
-      }.to_json
+      author: self.author,
+      message: self.message
+    }.to_json
   end
   
 end

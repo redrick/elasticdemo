@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   has_attached_file :attachment
 
   validates_attachment :attachment, size: { :in => 0..100.kilobytes }
-  
+
     #######################################
    #       (Elasticsearch + Tire)        #   
   #######################################
@@ -26,6 +26,9 @@ class Comment < ActiveRecord::Base
     indexes :message, type: 'string'
     indexes :created_at, type: 'date', :include_in_all => false
     indexes :updated_at, type: 'date', :include_in_all => false
+    indexes :attachment_file_name, type: 'string'
+    indexes :attachment_content_type, type: 'string'
+    indexes :attachment_content, type: 'attachment'
   end
 
   class << self
@@ -39,7 +42,10 @@ class Comment < ActiveRecord::Base
   def to_indexed_json
     {
       author: self.author,
-      message: self.message
+      message: self.message,
+      attachment_file_name: self.attachment_file_name,
+      attachment_content_type: self.attachment_content_type,
+      attachment_content: ( (!!self.attachment.path && File.exists?(self.attachment.path)) ? Base64.encode64(File.read(self.attachment.path)) : '' )
     }.to_json
   end
   

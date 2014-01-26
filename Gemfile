@@ -42,3 +42,5 @@ gem 'tire', require: 'tire'
 gem 'yajl-ruby', require: 'yajl/json_gem'
 
 gem 'pry'
+
+gem 'paperclip'

@@ -5,6 +5,9 @@ class Article < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+  has_attached_file :attachment
+  
+  validates_attachment :attachment, size: { :in => 0..100.kilobytes }
 
     #######################################
    #       (Elasticsearch + Tire)        #   

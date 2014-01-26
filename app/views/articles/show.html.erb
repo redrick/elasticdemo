@@ -18,6 +18,12 @@
   <%= @article.content %>
 </p>
 
+<% if @article.attachment_file_name %>
+  <p>
+    <%= link_to @article.attachment_file_name, @article.attachment.url %>
+  </p>
+<% end %>
+
 
 
 <p>
@@ -35,6 +41,13 @@
       <strong>Message:</strong>
       <%= comment.message %>
     </p>
+
+    <% if comment.attachment_file_name %>
+      <p>
+        <%= link_to comment.attachment_file_name, comment.attachment.url %>
+      </p>
+    <% end %>
+
     <p>
       <%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' }  %>
     </p>
@@ -64,6 +77,10 @@
   <div class="field">
     <%= f.label :message %><br>
     <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment %><br>
+    <%= f.file_field :attachment %>
   </div>
     <%= f.hidden_field :article_id, value: @article.id %>
   <div class="actions">

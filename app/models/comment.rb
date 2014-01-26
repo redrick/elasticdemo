@@ -4,7 +4,10 @@ class Comment < ActiveRecord::Base
   validates :author, presence: true
   validates :message, presence: true
 
+  has_attached_file :attachment
 
+  validates_attachment :attachment, size: { :in => 0..100.kilobytes }
+  
     #######################################
    #       (Elasticsearch + Tire)        #   
   #######################################

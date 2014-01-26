@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
@@ -20,9 +24,10 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= f.label :attachment %><br>
+    <%= f.file_field :attachment %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

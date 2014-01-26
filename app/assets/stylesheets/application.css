@@ -24,3 +24,9 @@
  .pagination {
   text-align: center;
  }
+
+ .new_comment {
+	border: solid 1px;
+	padding: 18px;
+	width: 200px;
+ }
